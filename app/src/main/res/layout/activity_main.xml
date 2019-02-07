@@ -11,6 +11,7 @@
         android:id="@+id/TTSDemo_btn"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:text = "TTSDemo"/>
+        android:text="TTSDemo"
+        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>
