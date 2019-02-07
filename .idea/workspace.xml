@@ -15,13 +15,88 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbf0750d-7feb-4a08-bc49-d7eb10fa3253" name="Default" comment="Merge branch 'master' of https://github.com/KaiserKkaiser/MSICUW-AndroidAPP&#10;&#10;# Conflicts:&#10;#&#9;.idea/gradle.xml&#10;#&#9;.idea/misc.xml&#10;#&#9;ClientLibrary/build.gradle&#10;#&#9;ClientLibrary/gradle/wrapper/gradle-wrapper.properties&#10;#&#9;app/src/main/AndroidManifest.xml&#10;#&#9;app/src/main/java/com/example/kaise/msicuw/Activity/MainActivity.java&#10;#&#9;app/src/main/res/layout/activity_main.xml">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/VisionServiceClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/VisionServiceRestClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/Adult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/AnalysisInDomainResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/AnalysisResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/Caption.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/Color.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/Description.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/Face.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/FaceRectangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/GenderEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/HandwritingRecognitionOperation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/HandwritingRecognitionOperationResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/HandwritingTextLine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/HandwritingTextResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/HandwritingTextWord.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/ImageType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/LanguageCodes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/Line.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/Metadata.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/Model.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/ModelResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/NameScorePair.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/OCR.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/Region.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/Tag.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/contract/Word.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/rest/HttpPatch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/rest/VisionServiceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/src/main/java/com/microsoft/projectoxford/vision/rest/WebServiceRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/lib/supportlibs/commons-io-2.4.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientLibrary/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MSICUW" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSICUW-AndroidAPP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MSICUW-AndroidAPP.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientLibrary/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/ClientLibrary/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientLibrary/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ClientLibrary/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/ClientLibrary/lib/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/example/kaise/msicuw/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kaise/msicuw/Activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kaise/msicuw/Activity/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kaise/msicuw/Activity/TTSDemoActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kaise/msicuw/Util/TextToSpeechUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_ttsdemo.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/kaise/msicuw/ExampleUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ClientLibrary/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/ClientLibrary/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/ClientLibrary/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,10 +120,9 @@
     <session id="1736544390">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.17" value="1" />
-          <entry key="project.open.time.41" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -88,7 +162,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
+            <state relative-caret-position="16">
               <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
             </state>
           </provider>
@@ -98,8 +172,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ClientLibrary/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
+            <state relative-caret-position="151">
+              <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -107,10 +181,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
+            <state relative-caret-position="182">
               <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
             </state>
           </provider>
+          <provider editor-type-id="android-manifest" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -124,12 +199,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/app.iml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kaise/msicuw/Activity/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
+            <state relative-caret-position="202">
               <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#598#892#0" expanded="true" />
+                <element signature="e#891#892#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2411,7 +2493,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kaise/msicuw/Activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/ClientLibrary/build.gradle" />
       </list>
     </option>
   </component>
@@ -2441,12 +2522,18 @@
             <path>
               <item name="MSICUW-AndroidAPP" type="b2602c69:ProjectViewProjectNode" />
               <item name="MSICUW-AndroidAPP" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="MSICUW-AndroidAPP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MSICUW-AndroidAPP" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="ClientLibrary" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -2468,7 +2555,59 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="MSICUW-AndroidAPP" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="MSICUW-AndroidAPP" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
+            </path>
+            <path>
+              <item name="MSICUW-AndroidAPP" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="MSICUW-AndroidAPP" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="Activity" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MSICUW-AndroidAPP" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="generatedJava" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="MSICUW-AndroidAPP" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="generatedJava" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="msicuw" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MSICUW-AndroidAPP" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="MSICUW-AndroidAPP" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="MSICUW-AndroidAPP" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2599,12 +2738,13 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Build" order="7" sideWeight="0.49554655" visible="true" weight="0.32740214" />
-      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" sideWeight="0.49959514" weight="0.6903915" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5044534" side_tool="true" visible="true" weight="0.32740214" />
+      <window_info active="true" anchor="bottom" id="Build" order="7" sideWeight="0.49635628" visible="true" weight="0.32740214" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" sideWeight="0.49959514" weight="0.6903915" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50364375" side_tool="true" visible="true" weight="0.32740214" />
       <window_info anchor="bottom" id="Logcat" order="10" sideWeight="0.6744939" weight="0.4039146" />
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49959514" weight="0.3291592" />
+      <window_info anchor="right" id="Assistant" weight="0.32955465" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -2614,7 +2754,6 @@
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info anchor="right" id="Preview" order="8" />
-      <window_info anchor="right" id="Assistant" order="9" weight="0.32955465" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -2625,18 +2764,32 @@
     <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/KaiserKkaiser/MSICUW-AndroidAPP&#10;&#10;# Conflicts:&#10;#&#9;.idea/gradle.xml&#10;#&#9;.idea/misc.xml&#10;#&#9;ClientLibrary/build.gradle&#10;#&#9;ClientLibrary/gradle/wrapper/gradle-wrapper.properties&#10;#&#9;app/src/main/AndroidManifest.xml&#10;#&#9;app/src/main/java/com/example/kaise/msicuw/Activity/MainActivity.java&#10;#&#9;app/src/main/res/layout/activity_main.xml" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_ttsdemo.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_ttsdemo.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kaise/msicuw/Activity/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+        <state relative-caret-position="342">
+          <caret line="27" column="1" lean-forward="true" selection-end-line="28" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kaise/msicuw/Activity/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#598#892#0" expanded="true" />
+            <element signature="e#891#892#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
+        <state relative-caret-position="182">
           <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
         </state>
       </provider>
@@ -2651,20 +2804,18 @@
     <entry file="file://$PROJECT_DIR$/app/app.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kaise/msicuw/Activity/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="16">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/ClientLibrary/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
+        <state relative-caret-position="151">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
         </state>
       </provider>
     </entry>
