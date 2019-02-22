@@ -10,4 +10,8 @@
     <string name="select_an_image">Select an Image</string>
     <string name="take_photo">Take a Photo</string>
     <string name="select_image_in_album">From Gallery</string>
+
+    <string name="add_subscription_key_tip_title">Subscription Key is Needed</string>
+    <string name="add_subscription_key_tip">Please put your subscription key to source file \"app/res/values/strings.xml\" to enable Vision API calls.</string>
+
 </resources>

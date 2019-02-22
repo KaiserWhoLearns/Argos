@@ -17,6 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.TTSDemoActivity" />
+        <activity android:name=".Activity.DescribeActivity" />
+        <activity android:name=".helper.SelectImageActivity" />
+        <activity android:name=".Activity.ThumbnailActivity" />
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
     </application>
 
 </manifest>
