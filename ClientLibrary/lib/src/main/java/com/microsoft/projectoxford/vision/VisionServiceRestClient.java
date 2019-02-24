@@ -53,7 +53,7 @@ import java.util.Map;
 
 public class VisionServiceRestClient implements VisionServiceClient {
     private static final String DEFAULT_REGION = "westus";
-    private static final String DEFAULT_API_ROOT = "https://%s.api.cognitive.microsoft.com/vision/v1.0";
+    private static final String DEFAULT_API_ROOT = "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0";
     private final String apiRoot;
     private final WebServiceRequest restCall;
     private Gson gson = new Gson();
@@ -148,7 +148,7 @@ public class VisionServiceRestClient implements VisionServiceClient {
     public AnalysisResult describe(String url, int maxCandidates) throws VisionServiceException{
         Map<String, Object> params = new HashMap<>();
         params.put("maxCandidates", maxCandidates);
-        String path = apiRoot + "/describe";
+        String path = apiRoot + "/Prediction/fce509db-b3b6-4d9c-94d4-ee20ae36c90c/image?iterationId=2382d675-ad2a-4ac4-a4df-c61d293dbc6e";
         String uri = WebServiceRequest.getUrl(path, params);
 
         params.clear();

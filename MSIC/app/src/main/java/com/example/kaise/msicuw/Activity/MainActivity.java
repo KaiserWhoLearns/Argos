@@ -28,6 +28,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button demo = (Button) findViewById(R.id.demo_btn);
+
+        demo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, Demo.class);
+                startActivity(intent);
+            }
+        });
+
+
         if (getString(R.string.subscription_key).startsWith("Please")) {
             new AlertDialog.Builder(this)
                     .setTitle(getString(R.string.add_subscription_key_tip_title))
