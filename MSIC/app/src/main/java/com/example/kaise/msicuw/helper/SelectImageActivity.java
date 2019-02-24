@@ -130,7 +130,7 @@ public class SelectImageActivity extends AppCompatActivity {
                 // Continue only if the File was successfully created
                 if (mFilePhotoTaken != null) {
                     mUriPhotoTaken = FileProvider.getUriForFile(this,
-                            "com.microsoft.projectoxford.visionsample.fileprovider",
+                            "com.example.kaise.msicuw.fileprovider",
                             mFilePhotoTaken);
                     intent.putExtra(MediaStore.EXTRA_OUTPUT, mUriPhotoTaken);
 
