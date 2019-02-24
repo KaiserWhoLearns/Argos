@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MSICUW</string>
+    <string name="app_name">Argos</string>
     <string name="title_activity_ttsdemo">TTSDemoActivity</string>
     <string name="subscription_key">56e1cb623af642f5b9ae84ed996f7658</string>
     <string name="subscription_apiroot">"https://westus.api.cognitive.microsoft.com/vision/v1.0"</string>
