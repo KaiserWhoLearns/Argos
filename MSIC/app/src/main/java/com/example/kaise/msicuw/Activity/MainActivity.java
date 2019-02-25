@@ -39,6 +39,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button camera = (Button) findViewById(R.id.camera);
+
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, CameraDemo.class);
+                startActivity(intent);
+            }
+        });
 
         if (getString(R.string.subscription_key).startsWith("Please")) {
             new AlertDialog.Builder(this)
