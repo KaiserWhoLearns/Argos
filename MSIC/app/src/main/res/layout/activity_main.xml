@@ -33,13 +33,6 @@
             android:text="Demo"
             android:id="@+id/demo_btn"
             android:layout_gravity="center_horizontal" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Camera"
-            android:id="@+id/camera"
-            android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
