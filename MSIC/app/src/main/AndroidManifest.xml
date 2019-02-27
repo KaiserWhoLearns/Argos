@@ -4,12 +4,15 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/logo"
+        android:icon="@mipmap/logo3"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/logo"
+        android:roundIcon="@mipmap/logo3"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activity.MainActivity">
@@ -39,6 +42,7 @@
             android:required="false" />
 
         <activity android:name=".Activity.Demo"></activity>
+        <activity android:name=".Activity.CameraActivity"/>
     </application>
 
 </manifest>

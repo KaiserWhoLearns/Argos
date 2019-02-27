@@ -2,6 +2,7 @@ package com.example.kaise.msicuw.Activity;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Camera;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -35,6 +36,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this, Demo.class);
+                startActivity(intent);
+            }
+        });
+
+        Button camera = (Button) findViewById(R.id.camera);
+
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, CameraActivity.class);
                 startActivity(intent);
             }
         });
