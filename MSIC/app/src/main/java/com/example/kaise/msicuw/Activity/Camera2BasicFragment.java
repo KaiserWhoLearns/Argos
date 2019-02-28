@@ -16,6 +16,12 @@
 
 package com.example.kaise.msicuw.Activity;
 
+// Image Helper
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import com.microsoft.projectoxford.vision.VisionServiceClient;
+import com.microsoft.projectoxford.vision.VisionServiceRestClient;
+
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -61,8 +67,16 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.kaise.msicuw.R;
+import com.google.gson.Gson;
+import com.microsoft.projectoxford.vision.VisionServiceClient;
+import com.microsoft.projectoxford.vision.contract.AnalysisResult;
+import com.microsoft.projectoxford.vision.rest.VisionServiceException;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -294,7 +308,7 @@ public class Camera2BasicFragment extends Fragment
     private CameraCaptureSession.CaptureCallback mCaptureCallback
             = new CameraCaptureSession.CaptureCallback() {
 
-        private void process(CaptureResult result) {
+        private void process(CaptureResult result) throws VisionServiceException, IOException {
             switch (mState) {
                 case STATE_PREVIEW: {
                     // We have nothing to do when the camera preview is working normally.
@@ -341,17 +355,30 @@ public class Camera2BasicFragment extends Fragment
         }
 
         @Override
-        public void onCaptureProgressed(@NonNull CameraCaptureSession session,
+        public void onCaptureProgressed (@NonNull CameraCaptureSession session,
                                         @NonNull CaptureRequest request,
                                         @NonNull CaptureResult partialResult) {
-            process(partialResult);
+            try{
+                process(partialResult);
+            }catch (IOException fuck) {
+                return;
+            }catch (VisionServiceException fuck2) {
+                return;
+            }
         }
 
         @Override
         public void onCaptureCompleted(@NonNull CameraCaptureSession session,
                                        @NonNull CaptureRequest request,
                                        @NonNull TotalCaptureResult result) {
-            process(result);
+            try {
+                process(result);
+            }catch (IOException e1) {
+                return;
+            }catch (VisionServiceException ex) {
+                return;
+            }
+
         }
 
     };
@@ -828,7 +855,7 @@ public class Camera2BasicFragment extends Fragment
      * Capture a still picture. This method should be called when we get a response in
      * {@link #mCaptureCallback} from both {@link #lockFocus()}.
      */
-    private void captureStillPicture() {
+    private void captureStillPicture() throws VisionServiceException, IOException{
         try {
             final Activity activity = getActivity();
             if (null == activity || null == mCameraDevice) {
@@ -855,7 +882,21 @@ public class Camera2BasicFragment extends Fragment
                 public void onCaptureCompleted(@NonNull CameraCaptureSession session,
                                                @NonNull CaptureRequest request,
                                                @NonNull TotalCaptureResult result) {
-                    showToast("Saved: " + mFile);
+                    //TODO Mfile place
+                    // Kaiser Added
+                    if(client == null) {
+                        client = new VisionServiceRestClient(getString(R.string.subscription_key), getString(R.string.subscription_apiroot));
+                    }
+                    try {
+                        showToast("Saved: " + mFile + describe(mFile));
+                    }catch (IOException ex) {
+                        return;
+                    }catch (VisionServiceException exx) {
+                        return;
+                    }
+
+
+
                     Log.d(TAG, mFile.toString());
                     unlockFocus();
                 }
@@ -867,6 +908,29 @@ public class Camera2BasicFragment extends Fragment
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
+    }
+    //TODO debug here(Kaiser Added)
+    public Bitmap bitmap = null;
+    /**
+    *Kaiser Added; Describe Helper
+    */
+    private VisionServiceClient client;
+    private String describe(File mfile) throws VisionServiceException, IOException {
+        Gson gson = new Gson();
+        if (mfile.exists()){
+            FileInputStream in = new FileInputStream(mfile);
+            BufferedInputStream buff = new BufferedInputStream(in);
+            byte[] byt = new byte[buff.available()];
+            buff.read(byt);
+            bitmap = BitmapFactory.decodeByteArray(byt,0, byt.length);
+            ByteArrayInputStream inputStream = new ByteArrayInputStream(byt);
+            AnalysisResult v = this.client.describe(inputStream,1);
+            String result = gson.toJson(v);
+            Log.d("result", result);
+            return result;
+
+        }
+        return "";
     }
 
     /**
@@ -907,15 +971,23 @@ public class Camera2BasicFragment extends Fragment
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            /**
-             * ADD OUR OWN logic here!!!!
-             *
-             *
-             *
-             *
-             */
+            //TODO Degbu
+
+
             case R.id.picture: {
                 takePicture();
+                // Kaiser Added
+                /*Bitmap bitmap = null;
+                Image image = mImageReader.acquireLatestImage();
+                if(image != null) {
+                    Image.Plane[] planes = image.getPlanes();
+                    if(planes[0].getBuffer() == null) {
+                        break;
+                    }
+                }*/
+                //File pictureTemp = new FileOutputStream(mImage);
+                //bitmap.compress(Bitmap.CompressFormat.JPEG, pictureTemp);
+
                 showToast("Taken");
                 if(mVibrator != null) {
                     mVibrator.vibrate(500);
@@ -955,7 +1027,9 @@ public class Camera2BasicFragment extends Fragment
          * The file we save the image into.
          */
         private final File mFile;
-
+       /* // Upload Logic
+        */
+       //TODO
         ImageSaver(Image image, File file) {
             mImage = image;
             mFile = file;
