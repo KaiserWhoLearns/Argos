@@ -1,0 +1,28 @@
+[
+    {
+        "outputFile": "C:\\Users\\Jinghua Wang\\Desktop\\cameraview\\library\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 724,
+                    "endLine": 25,
+                    "endColumn": 12,
+                    "endOffset": 1018
+                },
+                "from": {
+                    "file": "C:\\Users\\Jinghua Wang\\Desktop\\cameraview\\library\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 694,
+                        "endLine": 21,
+                        "endColumn": 12,
+                        "endOffset": 994
+                    }
+                }
+            }
+        ]
+    }
+]
