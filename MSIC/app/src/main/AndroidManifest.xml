@@ -4,7 +4,8 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -14,7 +15,6 @@
         android:roundIcon="@mipmap/logo3"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.Camera"></activity>
         <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,8 +41,8 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".Activity.Demo" />
-        <activity android:name=".Activity.CameraActivity" />
+        <activity android:name=".Activity.Demo"></activity>
+        <activity android:name=".Activity.CameraActivity"/>
     </application>
 
 </manifest>
