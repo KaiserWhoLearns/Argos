@@ -2,6 +2,7 @@ package com.example.kaise.msicuw.Activity;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -9,6 +10,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Vibrator;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.design.widget.FloatingActionButton;
@@ -24,6 +27,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.kaise.msicuw.R;
@@ -34,6 +38,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Locale;
 import java.util.Set;
 
 
@@ -71,12 +76,17 @@ public class CameraActivity2 extends AppCompatActivity implements
 
     private Handler mBackgroundHandler;
 
+    private TextToSpeech mTTS;
+
+    private Vibrator mVibrator;
+
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.take_picture:
                     if (mCameraView != null) {
+                        mVibrator.vibrate(300);
                         mCameraView.takePicture();
                     }
                     break;
@@ -102,6 +112,29 @@ public class CameraActivity2 extends AppCompatActivity implements
         if (actionBar != null) {
             actionBar.setDisplayShowTitleEnabled(false);
         }
+
+        // Initialize TextToSpeech
+        mTTS = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    // Set pitch and speed
+                    mTTS.setPitch(1.0f);
+                    mTTS.setSpeechRate(0.9f);
+
+                    // Check if the cellphone supports English
+                    int result = mTTS.setLanguage(Locale.US);
+                    boolean TTSLang= (result == TextToSpeech.LANG_MISSING_DATA ||
+                            result == TextToSpeech.LANG_NOT_SUPPORTED);
+                    if(TTSLang){
+                        Log.e("TTS", "English isn't supported" );
+                    }
+                }else{
+                    Log.e("TTS", "Cann't create TestToSpeech object");
+                }
+            }
+        });
+
     }
 
     @Override
@@ -122,12 +155,19 @@ public class CameraActivity2 extends AppCompatActivity implements
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},
                     REQUEST_CAMERA_PERMISSION);
         }
+        // Keep screen always on
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        // Get Vibrator
+        mVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     @Override
     protected void onPause() {
         mCameraView.stop();
+        closeVibrator();
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         super.onPause();
+
     }
 
     @Override
@@ -140,6 +180,27 @@ public class CameraActivity2 extends AppCompatActivity implements
                 mBackgroundHandler.getLooper().quit();
             }
             mBackgroundHandler = null;
+        }
+        closeTTS();
+    }
+
+    /**
+     * Closes the vibrator
+     */
+    private void closeVibrator(){
+        if (mVibrator != null) {
+            mVibrator.cancel();
+            mVibrator = null;
+        }
+    }
+
+    /**
+     * Release TextToSpeech
+     */
+    private void closeTTS(){
+        if (mTTS != null) {
+            mTTS.stop();
+            mTTS.shutdown();
         }
     }
 
@@ -231,10 +292,10 @@ public class CameraActivity2 extends AppCompatActivity implements
         //Todo
         // Call back method. Added our own methods.
         @Override
-        public void onPictureTaken(CameraView cameraView, final byte[] data) {
+        public void onPictureTaken(final CameraView cameraView, final byte[] data) {
             Log.d(TAG, "onPictureTaken " + data.length);
-            Toast.makeText(cameraView.getContext(), R.string.picture_taken, Toast.LENGTH_SHORT)
-                    .show();
+            //Toast.makeText(cameraView.getContext(), R.string.picture_taken, Toast.LENGTH_SHORT)
+                   // .show();
             getBackgroundHandler().post(new Runnable() {
                 @Override
                 public void run() {
@@ -245,6 +306,8 @@ public class CameraActivity2 extends AppCompatActivity implements
                         os = new FileOutputStream(file);
                         os.write(data);
                         os.close();
+                        // show text if the image is saved
+                        Toast.makeText(cameraView.getContext(), "Saved", Toast.LENGTH_SHORT).show();
                     } catch (IOException e) {
                         Log.w(TAG, "Cannot write to " + file, e);
                     } finally {
