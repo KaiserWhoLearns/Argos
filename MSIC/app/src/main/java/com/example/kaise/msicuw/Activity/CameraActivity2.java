@@ -37,7 +37,7 @@ import java.io.OutputStream;
 import java.util.Set;
 
 
-public class Camera extends AppCompatActivity implements
+public class CameraActivity2 extends AppCompatActivity implements
         ActivityCompat.OnRequestPermissionsResultCallback,
         AspectRatioFragment.Listener{
 
@@ -228,6 +228,8 @@ public class Camera extends AppCompatActivity implements
             Log.d(TAG, "onCameraClosed");
         }
 
+        //Todo
+        // Call back method. Added our own methods.
         @Override
         public void onPictureTaken(CameraView cameraView, final byte[] data) {
             Log.d(TAG, "onPictureTaken " + data.length);
