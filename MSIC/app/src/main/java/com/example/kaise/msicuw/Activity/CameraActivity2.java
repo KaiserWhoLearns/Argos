@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -33,8 +35,16 @@ import android.widget.Toast;
 import com.example.kaise.msicuw.R;
 import com.google.android.cameraview.AspectRatio;
 import com.google.android.cameraview.CameraView;
+import com.google.gson.Gson;
+import com.microsoft.projectoxford.vision.VisionServiceClient;
+import com.microsoft.projectoxford.vision.VisionServiceRestClient;
+import com.microsoft.projectoxford.vision.contract.AnalysisResult;
+import com.microsoft.projectoxford.vision.rest.VisionServiceException;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -303,11 +313,21 @@ public class CameraActivity2 extends AppCompatActivity implements
                             "picture.jpg");
                     OutputStream os = null;
                     try {
+                        if(client == null) {
+                            client = new VisionServiceRestClient(getString(R.string.subscription_key), getString(R.string.subscription_apiroot));
+                        }
+
                         os = new FileOutputStream(file);
                         os.write(data);
                         os.close();
                         // show text if the image is saved
-                        Toast.makeText(cameraView.getContext(), "Saved", Toast.LENGTH_SHORT).show();
+                        String des = "";
+                        try{
+                            des = describeImage(file);
+                        } catch (VisionServiceException e) {
+                            des = "Vision Service Exception caught";
+                        }
+                        Toast.makeText(cameraView.getContext(), "Saved" + des, Toast.LENGTH_SHORT).show();
                     } catch (IOException e) {
                         Log.w(TAG, "Cannot write to " + file, e);
                     } finally {
@@ -324,6 +344,29 @@ public class CameraActivity2 extends AppCompatActivity implements
         }
 
     };
+
+    public Bitmap bitmap = null;
+    /**
+     *Kaiser Added; Describe Helper
+     */
+    private VisionServiceClient client;
+    private String describeImage(File mfile) throws VisionServiceException, IOException {
+        Gson gson = new Gson();
+        if (mfile.exists()){
+            FileInputStream in = new FileInputStream(mfile);
+            BufferedInputStream buff = new BufferedInputStream(in);
+            byte[] byt = new byte[buff.available()];
+            buff.read(byt);
+            bitmap = BitmapFactory.decodeByteArray(byt,0, byt.length);
+            ByteArrayInputStream inputStream = new ByteArrayInputStream(byt);
+            AnalysisResult v = this.client.describe(inputStream,1);
+            String result = gson.toJson(v);
+            Log.d("result", result);
+            return result;
+
+        }
+        return "";
+    }
 
     public static class ConfirmationDialogFragment extends DialogFragment {
 
