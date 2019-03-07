@@ -1,7 +1,3 @@
-Apple
-Banana
-Coconut
-Orange
-Passionfruit
-Pineapple
-Strawberry
+Negative
+Red
+White
