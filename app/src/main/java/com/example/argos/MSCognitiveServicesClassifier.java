@@ -145,7 +145,7 @@ public class MSCognitiveServicesClassifier {
                 maxIndex = i;
             }
         }
-
+        // TODO where the labels comes from
         return new Classifier.Recognition("0", labels.get(maxIndex), maxConf, null);
     }
 

@@ -36,6 +36,8 @@ public interface Classifier {
     /**
      * Display name for the recognition.
      */
+    // TODO the name of the label
+            // Nothing to do here
     private final String title;
 
     /**
