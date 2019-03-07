@@ -23,9 +23,11 @@ import android.graphics.Typeface;
 
 import android.media.ImageReader.OnImageAvailableListener;
 import android.os.SystemClock;
+import android.util.Log;
 import android.util.Size;
 import android.util.TypedValue;
 import android.view.Display;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,8 @@ import java.util.Vector;
 import com.example.argos.OverlayView.DrawCallback;
 import com.example.argos.env.BorderedText;
 import com.example.argos.env.Logger;
+
+import static android.speech.tts.TextToSpeech.QUEUE_ADD;
 
 public class ClassifierActivity extends CameraActivity implements OnImageAvailableListener {
     private static final Logger LOGGER = new Logger();
@@ -103,8 +107,9 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
 
                         final List<Classifier.Recognition> results = new ArrayList<>();
 
-                        if (r.getConfidence() > 0.7) {
+                        if (r.getConfidence() > 0.6) {
                             results.add(r);
+                            mTTS.speak(r.getTitle(),QUEUE_ADD ,null);
                         }
 
                         LOGGER.i("Detect: %s", results);

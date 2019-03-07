@@ -36,11 +36,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Trace;
+import android.os.Vibrator;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.util.Size;
 import android.view.KeyEvent;
 import android.view.WindowManager;
 import android.widget.Toast;
 import java.nio.ByteBuffer;
+import java.util.Locale;
 
 import com.example.argos.env.Logger;
 import com.example.argos.env.ImageUtils;
@@ -72,12 +76,13 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
   protected Runnable postInferenceCallback;
   protected byte[][] yuvBytes=new byte[3][];
   protected int yRowStride;
+  protected TextToSpeech mTTS;
+  protected Vibrator mVibrator;
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     LOGGER.d("onCreate " + this);
     super.onCreate(null);
-    getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
     setContentView(R.layout.activity_camera);
 
@@ -178,6 +183,7 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
   public synchronized void onStart() {
     LOGGER.d("onStart " + this);
     super.onStart();
+    initTTS();
   }
 
   @Override
@@ -188,6 +194,10 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
     handlerThread = new HandlerThread("inference");
     handlerThread.start();
     handler = new Handler(handlerThread.getLooper());
+    // Keep screen always on
+    getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+    // Get Vibrator
+    mVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
   }
 
   @Override
@@ -207,7 +217,8 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
     } catch (final InterruptedException e) {
       LOGGER.e(e, "Exception!");
     }
-
+    closeVibrator();
+    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     super.onPause();
   }
 
@@ -221,6 +232,51 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
   public synchronized void onDestroy() {
     LOGGER.d("onDestroy " + this);
     super.onDestroy();
+    closeTTS();
+  }
+
+  private void initTTS(){
+    mTTS = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+      @Override
+      public void onInit(int status) {
+        if (status == TextToSpeech.SUCCESS) {
+          Log.d("TTS","Creating TTS");
+          // Set pitch and speed
+          mTTS.setPitch(1.0f);
+          mTTS.setSpeechRate(0.9f);
+
+          // Check if the cellphone supports English
+          int result = mTTS.setLanguage(Locale.US);
+          boolean TTSLang= (result == TextToSpeech.LANG_MISSING_DATA ||
+                  result == TextToSpeech.LANG_NOT_SUPPORTED);
+          if(TTSLang){
+            Log.e("TTS", "English isn't supported" );
+          }
+        }else{
+          Log.e("TTS", "Cann't create TestToSpeech object");
+        }
+      }
+    });
+  }
+
+  /**
+   * Release TextToSpeech
+   */
+  private void closeTTS(){
+    if (mTTS != null) {
+      mTTS.stop();
+      mTTS.shutdown();
+    }
+  }
+
+  /**
+   * Closes the vibrator
+   */
+  private void closeVibrator(){
+    if (mVibrator != null) {
+      mVibrator.cancel();
+      mVibrator = null;
+    }
   }
 
   protected synchronized void runInBackground(final Runnable r) {
@@ -293,7 +349,7 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
         if (map == null) {
           continue;
         }
-
+        //Todo Camera1 适配
         useCamera2API = isHardwareLevelSupported(characteristics,
             CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL_FULL);
         LOGGER.i("Camera API lv2?: %s", useCamera2API);
