@@ -349,7 +349,6 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
         if (map == null) {
           continue;
         }
-        //Todo Camera1 适配
         useCamera2API = isHardwareLevelSupported(characteristics,
             CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL_FULL);
         LOGGER.i("Camera API lv2?: %s", useCamera2API);

@@ -120,7 +120,7 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
                         requestRender();
                         computing = false;
                         if (postInferenceCallback != null) {
-                            postInferenceCallback.run();
+                            //postInferenceCallback.run();
                         }
                     }
                 });
