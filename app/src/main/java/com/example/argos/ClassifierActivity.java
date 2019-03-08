@@ -109,7 +109,8 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
 
                         if (r.getConfidence() > 0.6) {
                             results.add(r);
-                            mTTS.speak(r.getTitle(),QUEUE_ADD ,null);
+                            String text = interpretateTitle(r.getTitle());
+                            mTTS.speak(text, QUEUE_ADD ,null);
                         }
 
                         LOGGER.i("Detect: %s", results);
@@ -119,12 +120,24 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
                         resultsView.setResults(results);
                         requestRender();
                         computing = false;
-                        if (postInferenceCallback != null) {
+                        //if (postInferenceCallback != null) {
                             //postInferenceCallback.run();
-                        }
+                        //}
                     }
                 });
 
+    }
+
+    private String interpretateTitle(String title) {
+        if(title.equals("Negative")){
+            return "Could not detect traffic light";
+        }
+        else if(title.equals("Red")) {
+            return "Red light is on";
+        }
+        else {
+            return "Safe to cross";
+        }
     }
 
     @Override

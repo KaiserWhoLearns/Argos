@@ -40,7 +40,9 @@ import android.os.Vibrator;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.util.Size;
+import android.view.GestureDetector;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.widget.Toast;
 import java.nio.ByteBuffer;
@@ -59,6 +61,8 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
   private static final String PERMISSION_STORAGE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
   private boolean debug = false;
+  // Is double tap event processing?
+  private boolean processing;
 
   private Handler handler;
   private HandlerThread handlerThread;
@@ -78,6 +82,8 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
   protected int yRowStride;
   protected TextToSpeech mTTS;
   protected Vibrator mVibrator;
+  protected MyGestureListener mgListener;
+  protected GestureDetector mDetector;
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
@@ -85,6 +91,9 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
     super.onCreate(null);
 
     setContentView(R.layout.activity_camera);
+
+    mgListener = new MyGestureListener();
+    mDetector = new GestureDetector(this, mgListener);
 
     if (hasPermission()) {
       setFragment();
@@ -198,6 +207,7 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     // Get Vibrator
     mVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+    processing = false;
   }
 
   @Override
@@ -219,6 +229,7 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
     }
     closeVibrator();
     getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+    processing = false;
     super.onPause();
   }
 
@@ -235,6 +246,26 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
     closeTTS();
   }
 
+  public boolean onTouchEvent(MotionEvent event) {
+    return mDetector.onTouchEvent(event);
+  }
+
+  // Customized GestureListener class
+  private class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
+
+    @Override
+    public boolean onDoubleTap(MotionEvent event) {
+      if(!processing) {
+        processing = true;
+        Toast.makeText(getApplicationContext(), "Double Tap", Toast.LENGTH_SHORT).show();
+        mVibrator.vibrate(300);
+        // It will get the next frame/photo and analysis the photo
+        postInferenceCallback.run();
+      }
+      processing = false;
+      return true;
+    }
+  }
   private void initTTS(){
     mTTS = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
       @Override
