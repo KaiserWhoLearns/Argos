@@ -23,6 +23,7 @@ import android.graphics.Typeface;
 
 import android.media.ImageReader.OnImageAvailableListener;
 import android.os.SystemClock;
+import android.os.VibrationEffect;
 import android.util.Log;
 import android.util.Size;
 import android.util.TypedValue;
@@ -109,8 +110,7 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
 
                         if (r.getConfidence() > 0.6) {
                             results.add(r);
-                            String text = interpretateTitle(r.getTitle());
-                            mTTS.speak(text, QUEUE_ADD ,null);
+                            informUser(r.getTitle());
                         }
 
                         LOGGER.i("Detect: %s", results);
@@ -128,16 +128,20 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
 
     }
 
-    private String interpretateTitle(String title) {
+    private void informUser(String title) {
         if(title.equals("Negative")){
-            return "Could not detect traffic light";
+            mTTS.speak("Could not detect traffic light",QUEUE_ADD,null);
+
         }
         else if(title.equals("Red")) {
-            return "Red light is on";
+            mTTS.speak("Red light is on",QUEUE_ADD,null);
+            long[] form = {0, 300, 100, 300, 100, 300};
+            mVibrator.vibrate(form, -1);
         }
         else {
-            return "Safe to cross";
-        }
+            mTTS.speak("Safe to cross",QUEUE_ADD,null);
+            mVibrator.vibrate(300);
+    }
     }
 
     @Override

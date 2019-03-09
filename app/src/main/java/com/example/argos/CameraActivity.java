@@ -257,7 +257,6 @@ public abstract class CameraActivity extends Activity implements OnImageAvailabl
       if(!processing) {
         processing = true;
         Toast.makeText(getApplicationContext(), "Double Tap", Toast.LENGTH_SHORT).show();
-        mVibrator.vibrate(300);
         // It will get the next frame/photo and analysis the photo
         postInferenceCallback.run();
       }
