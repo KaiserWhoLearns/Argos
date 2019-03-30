@@ -17,13 +17,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.argos.AutoFitTextureView
+    <com.teamnamenotfound.argos.AutoFitTextureView
         android:id="@+id/texture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
 
-    <com.example.argos.RecognitionScoreView
+    <com.teamnamenotfound.argos.RecognitionScoreView
         android:id="@+id/results"
         android:layout_height="50dp"
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
 
         android:layout_alignParentTop="false" />
 
-    <com.example.argos.OverlayView
+    <com.teamnamenotfound.argos.OverlayView
         android:id="@+id/debug_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
